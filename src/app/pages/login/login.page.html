@@ -1,0 +1,23 @@
+<div class="grid place-items-center">
+    <div class="bg-gray-200 max-w-md w-full rounded py-16 px-12 flex flex-col items-center justify-center">
+        <!-- User profile image -->
+        <img class="rounded-full h-32 w-32" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="user avatar" />
+        <form (submit)="onSubmit($event)" class="mt-8 mb-4">
+            <div class="mb-4">
+                <label for="userEmail" class="sr-only">Username</label>
+                <input class="border-solid border border-gray-400 rounded px-2 py-3" type="text" placeholder="Username"
+                    [(ngModel)]="username" required name="username" />
+            </div>
+            <div class="mb-4">
+                <label for="userEmail" class="sr-only">Password</label>
+                <input class="border-solid border border-gray-400 rounded px-2 py-3" type="password"
+                    [(ngModel)]="password" placeholder="Password" required name="password" />
+            </div>
+            <!-- <div class="my-4 flex items-center">
+                <input class="h-4 w-4 mr-2" type="checkbox" id="userRemember" />
+                <label for="userRemember">Remember me</label>
+            </div> -->
+            <button class="bg-gray-500 hover:bg-gray-600 text-white font-bold w-full py-3" type="submit">Login</button>
+        </form>
+    </div>
+</div>
