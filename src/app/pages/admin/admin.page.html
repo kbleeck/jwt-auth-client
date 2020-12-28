@@ -1,1 +1,14 @@
-<p>admin works!</p>
+<div *hasRole="'admin' elseUseTemplate noAdminTemplate">You are an admin using *hasRole</div>
+
+
+<!-- User has role "admin" -->
+<!-- <div *ngIf="(auth.user$ | async)?.roles?.includes('admin') else noAdminTemplate">You are an admin</div> -->
+
+
+<!-- Attribute Directive -->
+<!-- Structural Directive -->
+
+<!-- User does not have role "admin" -->
+<ng-template #noAdminTemplate>
+    <div>You are not an admin</div>
+</ng-template>

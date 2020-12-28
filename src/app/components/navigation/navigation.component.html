@@ -1,7 +1,7 @@
 <div class="flex bg-gray-100 w-full h-screen">
     <div class="w-full max-w-xs bg-white rounded p-3 shadow-lg">
         <!-- USER -->
-        <div *ngIf="!!user" class="flex items-center space-x-4 p-2 mb-5">
+        <div *ngIf="(auth.user$ | async) as user" class="flex items-center space-x-4 p-2 mb-5">
             <img class="h-12 rounded-full" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="User">
             <div>
                 <h4 class="font-semibold text-lg text-gray-700 capitalize font-poppins tracking-wide">
@@ -13,7 +13,7 @@
         <ul class="space-y-2 text-sm">
             <li>
                 <a routerLink="/" routerLinkActive="bg-gray-200" [routerLinkActiveOptions]="{exact: true}"
-                class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
+                    class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
                     <span class="text-gray-600">
                         <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -39,7 +39,7 @@
                 </a>
             </li>
             <!-- Login -->
-            <li *ngIf="!user">
+            <li *ngIf="!(auth.isLoggedIn$ | async)">
                 <a routerLink="/login" routerLinkActive="bg-gray-200"
                     class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
                     <span class="text-gray-600">
@@ -53,9 +53,9 @@
                 </a>
             </li>
             <!-- Logout -->
-            <li *ngIf="!!user">
-                <a
-                    class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline">
+            <li *ngIf="(auth.isLoggedIn$ | async)">
+                <a (click)="auth.logout()"
+                    class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-gray-200 focus:bg-gray-200 focus:shadow-outline cursor-pointer">
                     <span class="text-gray-600">
                         <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
